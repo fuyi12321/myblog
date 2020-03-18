@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      margin: 0;
+      color: #333;
+    }
+
+    header, footer, section, article, aside, nav, figure {
+      display: block
+    }
+
+    ul, ol {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    p, dl, dd {
+      margin: 0;
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      font-size: 100%;
+    }
+
+    img {
+      border: none;
+    }
+
+    a {
+      color: #21a557;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    a:active, a:hover {
+      outline：none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    strong {
+      font-weight: normal;
+    }
+
+    em, i {
+      font-style: normal;
+    }
+
+    table {
+      border-collapse: collapse;
+      table-layout: fixed;
+      border-spacing: 0;
+    }
+
+    th, td {
+      padding: 0;
+    }
+
+    button, input {
+      box-sizing: border-box;
+      padding: 0;
+      border: none;
+      background: none;
+    }
+  </style>
+  <link rel="stylesheet" href="css/base/sweetalert.css">
+</head>
+<body>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!--<script src="src/message.js"></script>-->
+<script src="js/base/sweetalert.min.js"></script>
+<!-- 因为 fSweetalert 是基于  sweetalert 所以说 要在下面引用-->
+<script src="js/base/fsweetalert.js"></script>
+<script>
+  // fAlert.alertSuccessToast("成功")
+  fAlert.alertErrorCallback("错误的文本","错误的按钮")
+  // swal("你好");
+  // swal("你好", "文本");
+  // swal("你好", "文本", 'success');
+  // swal("你好", "文本", 'error');
+  // swal({
+  //     title: "删除新闻",
+  //     text: "你确定要删除新闻吗",
+  //     type: "warning",
+  //     showCancelButton: true,
+  //   cancelButtonText:"取消",
+  //     confirmButtonClass: "btn-danger",
+  //     confirmButtonText: "确定",
+  //     closeOnConfirm: false
+  //   },
+  //   function(){
+  //     swal("新闻", "成功删除", "success");
+  //   });
+  // 弹窗
+  // window.message.show("你好")
+  // window.message.showError("什么参数有误");
+  // window.message.showInfo("描述");
+  // window.message.showSuccess("登录成功")
+
+</script>
+</body>
+</html>

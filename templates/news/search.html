@@ -1,0 +1,158 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load news_template_filters %}
+{% block title %}
+  新闻搜索
+{% endblock %}
+{% block link %}
+  <link rel="stylesheet" href="{% static 'css/news/search.css' %}">
+{% endblock %}
+
+{% block main_contain %}
+  <!-- main-contain start  -->
+  <div class="main-contain ">
+    <!-- search-box start -->
+    <div class="search-box">
+      <form action="" style="display: inline-flex;">
+        <input type="search" placeholder="请输入要搜索的内容" name="q" class="search-control">
+        <input type="submit" value="搜索" class="search-btn">
+      </form>
+      <!-- 可以用浮动 垂直对齐 以及 flex  -->
+    </div>
+    <!-- search-box end -->
+    <!-- content start -->
+    <div class="content">
+      {# 显示搜索结果 #}
+      {% if not show_hot %}
+        <!-- search-list start -->
+        <div class="search-result-list">
+          <h2 class="search-result-title" style="font-weight: 700;color: #ff6620;">
+            搜索结果
+            <span>{{ page.paginator.num_pages|default:0 }}</span> 页
+          </h2>
+          <ul class="news-list">
+            {# 导入自带高亮功能 #}
+            {% load highlight %}
+            {% for news in page.object_list %}
+              <li class="news-item clearfix">
+                <a href="{% url 'news:news_detail' news.id %}" class="news-thumbnail" target="_blank">
+                  <img src="{{ news.object.image_url }}" alt="">
+                </a>
+                <div class="news-content">
+                  <h4 class="news-title">
+                    <a href="{% url 'news:news_detail' news.id %}">{% highlight news.title with query %}</a>
+                  </h4>
+                  <p class="news-details">{% highlight news.digest with query %}</p>
+                  <div class="news-other">
+                    <span class="news-type">{{ news.object.tag.name }}</span>
+                    <span class="news-time">{{ news.object.update_time }}</span>
+                    <span class="news-author">{% highlight news.object.author.username with query %}</span>
+                  </div>
+                </div>
+
+              </li>
+              {# django在for循环中放置了一个内置模板标记，如果for循环中没有任何对象，则运行{% empty %}模板标记内的代码 #}
+            {% empty %}
+              <li class="news-item clearfix">
+                <p>没有找到你想要的找的内容.</p>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <!-- search-list end -->
+        {# 显示热门 #}
+      {% else %}
+        <!-- news-contain start -->
+        <div class="news-contain">
+          <div class="hot-recommend-list">
+            <h2 class="hot-recommend-title">热门推荐</h2>
+            <ul class="news-list">
+              {# 自己做的分页，没有经过检索，不用object #}
+              {% for hotnews in page %}
+                <li class="news-item clearfix">
+                  <a href="{% url 'news:news_detail' hotnews.news.id %}" class="news-thumbnail">
+                    <img src="{{ hotnews.news.image_url }}">
+                  </a>
+                  <div class="news-content">
+                    <h4 class="news-title">
+                      <a href="{% url 'news:news_detail' hotnews.news_id %}">{{ hotnews.news.title }}</a>
+                    </h4>
+                    <p class="news-details">{{ hotnews.news.digest }}</p>
+                    <div class="news-other">
+                      <span class="news-type">{{ hotnews.news.tag.name }}</span>
+                      <span class="news-time">{{ hotnews.update_time }}</span>
+                      <span class="news-author">{{ hotnews.news.author.username }}</span>
+                    </div>
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <!-- news-contain end -->
+      {% endif %}
+      <!-- Pagination start-->
+      {# 底部页码条 #}
+      <div class="page-box" id="pages">
+        <div class="pagebar" id="pageBar">
+          <a class="al">{{ page.paginator.count|default:0 }}条</a>
+          <!-- prev page start-->
+          {# 是否有上一页 #}
+          {% if page.has_previous %}
+            {% if query %}
+              <a href="{% url 'news:news_search' %}?q={{ query }}&page={{ page.previous_page_number }}"
+                 class="prev">上一页</a>
+            {% else %}
+              <a href="{% url 'news:news_search' %}?page={{ page.previous_page_number }}" class="prev">上一页</a>
+            {% endif %}
+          {% endif %}
+          <!-- prev page end-->
+
+          <!-- page bar start-->
+        {# 列出所有 #}
+          {% if page.has_previous or page.has_next %}
+            {% for n in page|page_bar %}
+              {% if query %}
+                {% if n == '...' %}
+                  <span class="point">{{ n }}</span>
+                {% else %}
+                  {# 如果是当前页 #}
+                  {% if n == page.number %}
+                    <span class="sel">{{ n }}</span>
+                  {% else %}
+                    <a href="{% url 'news:news_search' %}?page={{ n }}&q={{ query }}">{{ n }}</a>
+                  {% endif %}
+                {% endif %}
+              {% else %}
+                {% if n == '...' %}
+                  <span class="point">{{ n }}</span>
+                {% else %}
+                  {% if n == page.number %}
+                    <span class="sel">{{ n }}</span>
+                  {% else %}
+                    <a href="{% url 'news:news_search' %}?page={{ n }}">{{ n }}</a>
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+          <!-- page bar end-->
+
+          <!-- next page start-->
+          {% if page.has_next %}
+            {% if query %}
+              <a href="{% url 'news:news_search' %}?q={{ query }}&page={{ page.next_page_number }}" class="prev">下一页</a>
+            {% else %}
+              <a href="{% url 'news:news_search' %}?page={{ page.next_page_number }}" class="prev">下一页</a>
+            {% endif %}
+          {% endif %}
+          <!-- next page end-->
+        </div>
+      </div>
+      <!-- Pagination end-->
+    </div>
+    <!-- content end -->
+  </div>
+  <!-- main-contain  end -->
+{% endblock %}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteMappingsManager">
+    <list>
+      <list>
+        <remote-mappings server-id="python@71f691bf-a48e-48e1-98d4-c1c2ec2f7889" />
+        <remote-mappings server-id="python@sftp://pyvip@192.168.93.128:22/home/pyvip/.virtualenvs/mylog_env/bin/python3.5">
+          <settings>
+            <list>
+              <mapping local-root="$PROJECT_DIR$" remote-root="/home/pyvip/MyBlog" />
+            </list>
+          </settings>
+        </remote-mappings>
+        <remote-mappings server-id="python@sftp://pyvip@192.168.93.129:22/home/pyvip/.environments，/mylog_env/bin/python3">
+          <settings>
+            <list>
+              <mapping local-root="$PROJECT_DIR$" remote-root="/home/pyvip/MyBlog/MyBlog" />
+            </list>
+          </settings>
+        </remote-mappings>
+        <remote-mappings server-id="python@sftp://pyvip@192.168.93.129:22/home/pyvip/.environments，/mylog_env/bin/python3.6">
+          <settings>
+            <list>
+              <mapping local-root="$PROJECT_DIR$" remote-root="/home/pyvip/MyBlog/MyBlog" />
+            </list>
+          </settings>
+        </remote-mappings>
+      </list>
+    </list>
+  </component>
+</project>

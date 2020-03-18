@@ -1,0 +1,34 @@
+<!-- template/doc/docDownload.html -->
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+  文档下载
+{% endblock %}
+{% block link %}
+      <link rel="stylesheet" href="{% static 'css/doc/docDownload.css' %}">
+    <script>
+        iMenuIndex = 2
+    </script>
+{% endblock %}
+
+{% block main_contain %}
+        <!-- main-contain start  -->
+        <div class="main-contain ">
+            <div class="banner">
+                <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1802845035,3786939119&fm=26&gp=0.jpg" alt="">
+            </div>
+            <div class="pay-doc-contain">
+                <ul class="pay-list">
+                    <!-- doc info -->
+                </ul>
+            </div>
+        <!-- btn-more start -->
+        <a href="javascript:void(0);" class="btn-more">滚动加载更多</a>
+        <!-- btn-more end -->
+        </div>
+        <!-- main-contain  end -->
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/doc/doc.js' %}"></script>
+{% endblock %}

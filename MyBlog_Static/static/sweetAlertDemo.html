@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- PC -->
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+	    <!-- 让部分国产浏览器默认采用高速模式(国内浏览器厂商一般都支持兼容模式（即 IE 内核）和高速模式（即 webkit 内核），不幸的是，所有国产浏览器都是默认使用兼容模式。目前只有360浏览器支持此 <meta> 标签) -->
+	    <meta name="renderer" content="webkit">
+	    <!-- mobile -->
+	    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	    <!-- UC强制全屏 -->
+	    <meta name="full-screen" content="yes">
+	    <!-- QQ强制全屏 -->
+	    <meta name="x5-fullscreen" content="true">
+		<title>sweetAlertDemo</title>
+		<meta name="author" content="handsomeFu" />
+		<meta name="description" content="150 words">
+		<meta name="keywords" content="your tags">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+		<style>
+			body{margin: 0; color: #333;}
+		    header,footer,section,article,aside,nav,figure{display:block}
+		    ul,ol{margin: 0;padding: 0;list-style: none;}
+		    p,dl,dd{margin: 0;}
+		    h1,h2,h3,h4{margin: 0;font-size: 100%;}
+		    img{border:none;}
+		    a{color: #21a557;cursor: pointer; text-decoration: none; }
+		    a:active,a:hover{outline：none;}
+		    a:hover{text-decoration: underline;}
+		    strong{font-weight:normal;}
+		    em,i{font-style:normal;}
+		    table{border-collapse: collapse; table-layout: fixed;border-spacing:0;}
+		    th,td{padding: 0;}
+		    button,input{box-sizing: border-box;padding: 0;border: none;background: none;}
+		</style>
+		<link rel="stylesheet" href="sweetalert.css">
+		<script src="sweetalert.min.js"></script>
+		<script src="fsweetalert.js"></script>
+	</head>
+<body>
+
+	<script>
+		// npm bower yran ==> pip类似
+		// fAlert.alertInfoWithTitle("title")
+		fAlert.alertNewsSuccessCallback("text", "确定", function(){
+			// 点击确定之后 要做什事情
+			alert(1);
+		})
+		//
+	</script>
+</body>
+</html>
